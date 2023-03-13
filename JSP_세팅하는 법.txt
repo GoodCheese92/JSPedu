@@ -1,0 +1,50 @@
+1. JSP 세팅하는 법(이클립스)
+1. TOMCAT과 이클립스를 다시 압축을 풀어준다.
+
+ - 톰캣 설치 방법은 다음 글을 참고
+
+ - https://goodcheese92.tistory.com/102
+
+2. TOMCAT 세팅하는 법
+
+ 1) 압축 풀은 tomcat 폴더 안에 conf 폴더로 들어간다.
+ 2) server.xml 파일을 메모장으로 연다.
+ 3) -->표시는 주석이다
+ 4) 스크롤을 내리다 중간 쯤에  <Connector port="8080" protocol="HTTP/1.1"부분을 찾는다. (나중에 db서버랑 겹치니까 변경해야 한다.)
+ 5) "8080"을 "9090"으로 변경 후 저장을 누른다.
+
+ 6) webapps 폴더 -> examples 폴더-> web-INF 폴더 -> lib 폴더로 들어가면 2개의 라이브러리 파일이 있다.
+
+ 7) 2개의 라이브러리 파일을 복사 후 톰캣 최상위 폴더에 lib 폴더로 붙여넣기 한다.
+
+3. 이클립스 세팅하는 법
+
+ 1) 기본적으로 html 세팅하는 법과 같다.
+
+ 2) window -> preference -> workspace에서 왼쪽 아래 text file encoding UTF-8로 변경
+
+ 3) window -> preference -> web Browser에서 Use external web browser선택 Chrome으로 변경
+
+ 4) window -> preference -> Server -> Runtime Environment에서 tomcat v9.0버전 선택
+
+ 5) tomcat 경로 선택(압축 새로 푼 tomcat 폴더 선택)
+
+ 6) window -> preference -> Web -> CSS Files에서 encoding UTF-8로 변경
+
+ 7) window -> preference -> Web -> HTML Files에서 encoding UTF-8로 변경
+
+ 8) window -> preference -> Web -> JSP Files에서 encoding UTF-8로 변경
+
+4. 프로젝트 생성
+
+ 1) 다이나믹 웹 프로젝트 생성
+
+ 2) Dynamic web module version이 3.5이상이어야 한다.
+
+ 3) 프로젝트 생성 후 Java Resource폴더에서 src 폴더 우 클릭 후 new -> Servlet 선택
+
+ 4) paekage명과 class명 입력 후 next 클릭
+
+ 5) URL mapping 내용 더블클릭 후 /hello.do로 변경 후 next 클릭
+
+ 6) 나머지 다 체크 해제 후, Inherited abstact methods, service만 선택 후 finish

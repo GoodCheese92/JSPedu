@@ -52,21 +52,3 @@ public class Ex01_HelloAction extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
