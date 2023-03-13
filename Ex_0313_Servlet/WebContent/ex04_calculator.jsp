@@ -22,6 +22,7 @@
 			} // end of cal()
 		</script>
 	</head>
+	
 	<body>
 		<form>
 			<table>

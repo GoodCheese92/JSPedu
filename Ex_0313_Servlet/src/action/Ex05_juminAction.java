@@ -61,12 +61,12 @@ public class Ex05_juminAction extends HttpServlet {
 			out.print("<style>");
 				out.print("table{border-collapse: collapse; border-width:3px;"
 						+ "width: 300px; height:200px; text-align:center;}"
-						+ "margin:5px auto;");
+						+ " margin:50px auto;");
 			out.print("</style>");
 			out.print("<title>주민등록번호 정보사이트</title>");
 		out.print("</head>");
 		out.print("<body>");
-			out.print("<table "+"border = \"1\"" +">");
+			out.print("<table border=\"1\">");
 				out.print("<tr>");
 					out.print("<td>"+"주민번호"+"</td>");
 					out.print("<td>"+jumin+"</td>");

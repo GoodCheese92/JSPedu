@@ -33,16 +33,15 @@ public class Ex03_RegisterAction extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.print("<html>");
 		out.print("<head>");
-		out.print("<title>join.do 페이지</title>");
+			out.print("<title>join.do 페이지</title>");
 		out.print("</head>");
 		out.print("<body>");
-		out.print("<h1>회원가입 성공</h1>");
-		out.print("ID : " + id + "<br>");
-		out.print("PWD : " + pwd + "<br>");
-		out.print("나이 : " + age);
+			out.print("<h1>회원가입 성공</h1>");
+			out.print("ID : " + id + "<br>");
+			out.print("PWD : " + pwd + "<br>	");
+			out.print("나이 : " + age);
 		out.print("</body>");
 		out.print("</html>");
 
 	} // end of service
-
 } // end of class

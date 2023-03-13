@@ -58,29 +58,6 @@ public class Ex02_GreetAction extends HttpServlet {
 			out.print("<h1>"+result+"</h1>");
 		out.print("</body>");
 		out.print("</html>");
-		
-		
-		
 	} // end of service()
 
 } // end of class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

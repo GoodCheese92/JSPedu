@@ -36,10 +36,7 @@ public class Ex04_calculatorAction extends HttpServlet {
 			out.print("/ 결과 : " + (su1 / su2)+ "<br>");
 		out.print("</body>");
 		out.print("</html>");
-		
-		
-		
-		
+
 	} // end of service()
 
 } // end of class
