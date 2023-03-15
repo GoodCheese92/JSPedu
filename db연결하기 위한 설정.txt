@@ -1,0 +1,9 @@
+-DB 연결을 위한 최소 설정-
+1. https://www.apache.org/ 에 들어간다.
+2. 스크롤을 밑으로 내려서 commons를 찾는다.
+3. 해당 라이브러리를 찾아서 다운
+4. C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib -> ojdbc6.jar를 찾는다.
+5. 이클립스 다이내믹 프로젝트 -> WebContent -> WEB-INF -> lib에 4개의 라이브러리를 복사 붙여넣기 한다.
+
+6. context.xml 파일을 META-INF에 복사 붙여넣기 한다.
+7. context.xml 파일에 들어가서 설정을 변경한다.
