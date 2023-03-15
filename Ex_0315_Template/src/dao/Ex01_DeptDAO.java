@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class Ex01_DeptDAO {
 
 		try {
 			//1.Connection얻어온다
-			conn = DBService.getInstance().getConnection();
+			conn = DBService.getInstance().getConncetion();
 			//2.명령처리객체정보를 얻어오기
 			pstmt = conn.prepareStatement(sql);
 
