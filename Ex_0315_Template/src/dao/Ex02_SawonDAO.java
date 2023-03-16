@@ -8,35 +8,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import service.DBService;
-import vo.Ex01_DeptVO;
+import vo.Ex02_SawonVO;
 
-public class Ex01_DeptDAO {
-	// DAO(Data Access Object) : DB 접근을 목표로 하는 클래스
+public class Ex02_SawonDAO {
 	// single-ton pattern: 
 	// 객체1개만생성해서 지속적으로 서비스하자
-	static Ex01_DeptDAO single = null;
+	static Ex02_SawonDAO single = null;
 	
-	private Ex01_DeptDAO() {
+	private Ex02_SawonDAO() {
 
 	} // end of constructor
 	
-	public static Ex01_DeptDAO getInstance() {
+	public static Ex02_SawonDAO getInstance() {
 		//생성되지 않았으면 생성
 		if (single == null)
-			single = new Ex01_DeptDAO();
+			single = new Ex02_SawonDAO();
 		//생성된 객체정보를 반환
 		return single;
-	}
+	} // end of getInstance()
 	
-	// 부서테이블 조회
-	public List<Ex01_DeptVO> selectList() {
+	// 사원 정보를 조회하기 위한 메서드
+	public List<Ex02_SawonVO> selectList() {
 
-		List<Ex01_DeptVO> list = new ArrayList<Ex01_DeptVO>();
+		List<Ex02_SawonVO> list = new ArrayList<Ex02_SawonVO>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM dept";
-
+		String sql = "SELECT * FROM sawon";
+		
 		try {
 			//1.Connection얻어온다
 			conn = DBService.getInstance().getConnection();
@@ -47,11 +46,13 @@ public class Ex01_DeptDAO {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Ex01_DeptVO vo = new Ex01_DeptVO();
+				Ex02_SawonVO vo = new Ex02_SawonVO();
 				//현재레코드값=>Vo저장
+				vo.setSabun(rs.getInt("sabun"));
+				vo.setSaname(rs.getString("saname"));
 				vo.setDeptno(rs.getInt("deptno"));
-				vo.setDname(rs.getString("dname"));
-				vo.setLoc(rs.getString("loc"));
+				vo.setSajob(rs.getString("sajob"));
+				vo.setSahire(rs.getString("sahire"));
 				
 				//ArrayList추가
 				list.add(vo);
@@ -76,5 +77,6 @@ public class Ex01_DeptDAO {
 		}
 
 		return list;
-	}
+	} // end of selectList()
+	
 } // end of class

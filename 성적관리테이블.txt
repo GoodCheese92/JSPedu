@@ -1,0 +1,22 @@
+-- 시퀀스 생성
+create sequence seq_scoretb_no;
+
+-- 테이블 생성
+create table SCORE (
+	no NUMBER(3) primary key, -- 일련번호
+	name VARCHAR2(50) not null, -- 이름
+	kor NUMBER(3), -- 국어점수
+	eng NUMBER(3), -- 영어점수
+	mat NUMBER(3) -- 수학점수
+);
+
+-- 샘플데이터
+insert into SCORE values(seq_scoretb_no.nextVal, '일길동', 77, 88, 99);
+insert into SCORE values(seq_scoretb_no.nextVal, '이길동', 97, 98, 99);
+insert into SCORE values(seq_scoretb_no.nextVal, '삼길동', 65, 76, 82);
+commit;
+
+-- 총점, 평균, 순위가 추가된 조회 view 생성
+create or replace view SCORE_VIEW as
+select s.*, (kor+eng+mat) total, round((kor+eng+mat)/3, 1) avg, rank() over(order by (kor+eng+mat) DESC) rank
+from (select * from SCORE) s order by no;

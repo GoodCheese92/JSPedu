@@ -1,0 +1,16 @@
+-- 시퀀스 생성
+create sequence seq_friends_no;
+
+-- 테이블 생성
+create table FRIENDS (
+	no NUMBER(3) primary key,
+	name VARCHAR2(50) not null,
+	age NUMBER(3),
+	tel VARCHAR2(50)
+);
+
+-- sample data 생성
+insert into FRIENDS values(seq_friends_no.nextVal, '안지현', 24, '010-1111-1111');
+insert into FRIENDS values(seq_friends_no.nextVal, '김연아', 34, '010-2222-2222');
+insert into FRIENDS values(seq_friends_no.nextVal, '서수민', 32, '010-3333-3333');
+commit;
