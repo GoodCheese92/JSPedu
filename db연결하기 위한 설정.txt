@@ -7,3 +7,5 @@
 
 6. context.xml 파일을 META-INF에 복사 붙여넣기 한다.
 7. context.xml 파일에 들어가서 설정을 변경한다.
+8. username, password 등등
+9.template 설정
