@@ -47,16 +47,3 @@ function sendRequest(url, param, callBack, method){
 	
 	xhr.send(httpMethod == 'POST'?httpParam:null);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -16,7 +16,12 @@
 			function send(){
 				let dan = document.getElementById("dan").value;
 				// 유효성 체크
+				let dan_check = /^[0-9]+$/;
 				
+				if(!dan_check.test(dan) || dan < 1 || dan > 9){
+					alert("2~9 사이의 숫자만 입력해주세요.");
+					return;
+				}
 				
 				// Ajax를 통해 dan을 파라미터로 전달
 				let url = "ex01_gugudan_ajax.jsp";
