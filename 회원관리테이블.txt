@@ -1,0 +1,15 @@
+-- 시퀀스 생성
+create sequence seq_myuser_idx;
+
+-- 회원 테이블 생성
+create table myuser(
+	idx number(3) primary key, -- 회원번호
+	name varchar2(50), -- 이름
+	id varchar2(50) unique, -- 아이디(중복방지)
+	pwd varchar2(50), -- 비번
+	email varchar2(50), -- 이메일
+	addr varchar2(200) -- 주소
+);
+
+-- 샘플데이터
+insert into myuser values (seq_myuser_idx.nextVal, '일길동', 'hong', '1111', 'hong@k.com', '서울특별시 마포구');

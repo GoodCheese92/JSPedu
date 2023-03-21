@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!-- EL 표기법 : jsp에서 표현되는 표현식을 더 간결하게 사용할 수 있도록 해 주는 표현형태
+<!-- EL 표기법 : jsp에서 표현되는 표현식을 더 간결하게 사용할 수 있도록 해 주는 표현 형태
 	 EL(Expression Language) : EL로 값을 표현하려면 jsp의 관리하에 있는 4개의 영역에서만 사용을 할 수 있다.
 	 1) page영역 : 단 하나의 페이지(현재페이지)에서만 값을 저장하고 공유할 수 있다.
 	 2) request영역(가장 많이 쓰임) : 지역개념으로 페이지가 닫히면 영역도 종료가 된다. 
@@ -82,18 +82,5 @@
 		<!-- 문장으로 작성하기도 한다. -->
 		${ 10 gt 3 and 5 eq 5 }
 		${ 10 gt 3 or 5 eq 5 }
-		
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

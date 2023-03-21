@@ -49,7 +49,7 @@
 					// 결과를 가지고 데이터를 읽어온다.
 					let data = xhr.responseText; // 최종 결과값
 					// html의 코드를 모두 가져온다.
-					// alert(data);
+					alert(data);
 					
 					document.getElementById("disp").innerHTML = data;
 				}

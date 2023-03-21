@@ -48,10 +48,6 @@
 			for(let i=0; i<course.student.length; i++){
 				document.write(course.student[i].name + ", " + course.student[i].age + "살<br>");
 			} // for
-			
-			
-			
-			
 		</script>
 	</head>
 	<body>
