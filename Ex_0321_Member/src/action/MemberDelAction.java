@@ -15,7 +15,7 @@ import dao.MemberDAO;
 @WebServlet("/delete.do")
 public class MemberDelAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// delete.do?idx=2;
@@ -23,10 +23,36 @@ public class MemberDelAction extends HttpServlet {
 		
 		int success_row = MemberDAO.getInstance().delete(idx);
 		
-		if(success_row == 1) {
-			response.getWriter();
+		String param = "no";
+		if(success_row > 0) {
+			// 삭제 성공 시 param을 yes로 변경
+			param = "yes";
 		}
+		
+		// String resultStr = String.format("[{'res':'%s'}]", param);
+		
+		// 콜백메서드로 복귀
+		response.getWriter().print(param);
+		
+//		if(success_row == 1) {
+//			response.getWriter();
+//		}
 		
 	} // end of service
 
 } // end of class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

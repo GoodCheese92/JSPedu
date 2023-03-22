@@ -34,7 +34,6 @@ public class MemberListAction extends HttpServlet {
 		
 		// 저장하는 것 --> 바인딩, 저장한 것을 사용하는 곳 --> 포워딩
 		
-		
 	} // end of service()
 
 } // end of class

@@ -16,7 +16,7 @@ public class MemberDAO {
 	static MemberDAO single = null;
 
 	private MemberDAO() {
-		// TODO Auto-generated constructor stub
+
 	} // end of constructor
 
 	public static MemberDAO getInstance() {

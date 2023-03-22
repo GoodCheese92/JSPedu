@@ -99,23 +99,36 @@ function che(){
 
 // 멤버 삭제 (Ajax 사용해서)
 function del(idx){
+	// location.href = 'delete.do?idx='+idx;
 	if(!confirm("삭제하시겠습니까?")){
 		return;
 	}
 	
-	let url = "delete.do";
-	let param = "idx=" + idx;
+	// idx를 Ajax를 통해서 서버측으로 전달
+	var url = "delete.do";
+	var param = "idx=" + idx;
 	
 	sendRequest(url, param, resultFn_del, "get");
-	
 	
 } // end of del()
 
 function resultFn_del(){
+	
 	if(xhr.readyState == 4 && xhr.status == 200){
-		//location.href = "member_list.do";
-		console.log("test");
-		location.reload();
-		//location.replace(location.href);
+		var data = xhr.responseText;
+		// data --> "no" or "yes"
+		// alert(data);
+		if(data == "yes"){
+			alert("삭제 성공");
+			// location.href="member_list.do";
+			history.go(0);
+		} else{
+			alert("삭제 실패. 관리자에게 문의하세요");
+		}
+			
+		// location.href = "member_list.do";
+		// console.log("test");
+		// location.reload();
+		// location.replace(location.href);
 	}
 } // end of resultFn_del
