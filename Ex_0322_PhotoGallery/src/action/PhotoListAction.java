@@ -16,6 +16,7 @@ import vo.PhotoVO;
 /**
  * Servlet implementation class PhotoListAction
  */
+// 서버를 죽이면 절대경로가 변경되므로 꼭 백업 후 서버를 죽이도록 하자
 @WebServlet("/list.do")
 public class PhotoListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
