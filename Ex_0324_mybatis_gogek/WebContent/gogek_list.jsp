@@ -26,7 +26,13 @@
 				
 				f.action = "gogek_del.do?idx="+idx;
 				f.submit();
-			}
+			} // end of del()
+			
+			function search(){
+				let addr_search = document.getElementById("addr_search").value;
+				
+				location.href="gogek_search.do?addr="+addr_search;
+			} // end of search()
 		</script>
 	</head>
 	<body>
@@ -54,6 +60,16 @@
 				</tr>
 			</form>
 			</c:forEach>
+				<tr>
+					<td colspan="6">
+						<input type="button" value="전체보기" onclick="location.href='list.do'"/>
+						<input type="text" placeholder="검색할 지역을 입력하세요" id="addr_search"
+							onkeyup="if(window.event.keyCode==13){search();}"/>
+						<input type="button" value="검색" onclick="search();"/>
+						<span>/</span>
+						<input type="button" value="등록" onclick="location.href='insert_form.jsp'"/>
+					</td>
+				</tr>
 		</table>
 	</body>
 </html>

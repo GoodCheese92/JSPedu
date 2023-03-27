@@ -1,0 +1,79 @@
+-- 시퀀스 생성
+create sequence seq_board_idx;
+
+-- 테이블 생성
+create table BOARD (
+	idx NUMBER(4) primary key, -- 일련번호
+	name VARCHAR2(50), -- 이름
+	subject VARCHAR2(200), -- 제목
+	content CLOB, -- 내용
+	pwd VARCHAR2(50), -- 비번
+	ip VARCHAR2(20), -- ip
+	regidate DATE, -- 작성일자
+	readhit NUMBER(4), -- 조회수
+	-- 게시판 운영을 위한 중요한 컬럼들
+	ref NUMBER(3), -- 기준글(댓글을 달 원본글)
+	step NUMBER(3), -- 댓글순서(수직)
+	depth NUMBER(2) -- 댓글의 깊이(수평)	
+);
+
+-- 샘플데이터(메인글)
+insert into board values(
+	seq_board_idx.nextVal,
+	'일길동',
+	'제목',
+	'테스트내용입니다.',
+	'1111',
+	'192.1.1.1',
+	sysdate,
+	0,
+	seq_board_idx.currVal, -- ref
+	0, -- step
+	0 -- depth	
+);
+commit;
+
+-- 샘플데이터(댓글)
+insert into board values(
+	seq_board_idx.nextVal,
+	'일길동2',
+	'제목2',
+	'테스트내용입니다.2',
+	'1111',
+	'192.1.1.1',
+	sysdate,
+	0,
+	1, -- ref
+	1, -- step
+	1 -- depth	
+);
+
+-- 샘플데이터(대댓글)
+insert into board values(
+	seq_board_idx.nextVal,
+	'일길동3',
+	'제목3',
+	'대댓글입니다.',
+	'1111',
+	'192.1.1.1',
+	sysdate,
+	0,
+	1, -- ref
+	2, -- step
+	2 -- depth	
+);
+
+-- 게시판 조회
+select * from BOARD order by REF desc, step asc;
+
+-- 게시글 업로드 구조
+idx		ref	step	depth
+3. 반갑		3	0	0
+2. 하이		2	0	0
+1. 안녕		1	0	0
+   ㄴ 6. 또또댓	1	1	1
+          ㄴ 7. 대댓	1	2	2	
+   ㄴ 5. 또댓	1	3	1
+   ㄴ 4. 댓글	1	4	1	 
+
+

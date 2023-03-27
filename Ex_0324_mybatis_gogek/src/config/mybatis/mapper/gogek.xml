@@ -2,24 +2,21 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="s">
+<mapper namespace="g">
 	<select id="gogek_list" resultType="vo.GogekVO">
 		select * from gogek
+	</select>
+	
+	<!-- 지역별 고객 조회 -->
+	<select id="gogek_select" parameterType="String" resultType="vo.GogekVO">
+		select * from gogek where goaddr like '%'||#{ addr }||'%'
 	</select>
 	
 	<delete id="gogek_delete" parameterType="int">
 		delete from gogek where gobun = #{ idx }
 	</delete>
+	
+	<insert id="gogek_insert" parameterType="vo.GogekVO">
+		insert into gogek values (seq_gogek_idx.nextVal, #{ goname }, #{ goaddr }, #{ gojumin }, #{ godam })
+	</insert>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
