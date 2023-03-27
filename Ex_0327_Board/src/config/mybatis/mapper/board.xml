@@ -8,4 +8,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from board order by ref desc, step asc
 	</select>
 	
+	<select id="board_select" resultType="board" parameterType="int">
+		select * from board where idx = #{ idx }
+	
+	</select>
+	
+	<insert id="board_insert" parameterType="board">
+		insert into BOARD values (seq_board_idx.nextVal,
+								  #{name},
+								  #{subject},
+								  #{content},
+								  #{pwd},
+								  #{ip},
+								  sysdate,
+								  #{readhit},
+								  seq_board_idx.currVal,
+								  #{step},
+								  #{depth}
+								  )
+	</insert>
+	
 </mapper>

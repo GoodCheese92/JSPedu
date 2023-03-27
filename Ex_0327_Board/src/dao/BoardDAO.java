@@ -36,5 +36,24 @@ public class BoardDAO {
 		
 		return board_list;
 	} // end of select()
+	
+	// 특정 번호 게시물 조회
+	public BoardVO select(int idx){
+		SqlSession sqlSession = factory.openSession();
+		
+		BoardVO vo = sqlSession.selectOne("b.board_select", idx);
+		sqlSession.close();
+		
+		return vo;
+	} // end of select()
+	
+	// 게시물 작성물 추가
+	public int insert(BoardVO vo) {
+		SqlSession sqlSession = factory.openSession(true);
+		int res = sqlSession.insert("b.board_insert", vo);
+		sqlSession.close();
+		
+		return res;
+	}
 
 } // end of class

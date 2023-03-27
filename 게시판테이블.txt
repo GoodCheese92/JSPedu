@@ -65,7 +65,7 @@ insert into board values(
 
 -- 게시판 조회
 select * from BOARD order by REF desc, step asc;
-
+	
 -- 게시글 업로드 구조
 idx		ref	step	depth
 3. 반갑		3	0	0
