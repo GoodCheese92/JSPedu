@@ -1,4 +1,14 @@
 @charset "UTF-8";
 
-table{margin: 5px auto;}
-caption{font:bold 30px "hy헤드라인m", sans-serif;}
+table{margin: 5px auto;
+	  border-collapse: collapse;
+	  border-width: 5px;
+	  width:700px;}
+caption{font:bold 30px "hy헤드라인m", sans-serif;
+		color:green;}
+th{background: #ffff8f;
+   text-align: center;}
+.title2{background: #ffff8f;
+		text-align: center;}
+.button{text-align: right;
+		border-left-style:none;}

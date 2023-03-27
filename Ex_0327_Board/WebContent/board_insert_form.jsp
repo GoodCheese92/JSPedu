@@ -48,11 +48,11 @@
 				<caption>:::게시글 등록:::</caption>
 				<tr class="title">
 					<th class="title_th">제목</th>
-					<td colspan="3"><input type="text" placeholder="제목" name="subject" style="width:97%; height:30px;"/></td>
+					<td colspan="3" class="title_td"><input type="text" placeholder="제목" name="subject" style="width:97%; height:30px;"/></td>
 				</tr>
 				<tr class="content">
 					<th class="title_th">내용</th>
-					<td colspan="3"> <textarea placeholder="Input some text." name="content" style="width:97%; height:400px; text-align: left;">
+					<td colspan="3" class="content_td"> <textarea placeholder="내용" name="content" style="width:97%; height:400px;">
 					</textarea>
 				</tr>
 				<tr>
@@ -62,7 +62,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4">
+					<td colspan="4" style="text-align: right">
 						<input type="button" value="등록" onclick="send(this.form);" style="height:30px;">
 						<input type="button" value="취소" onclick="history.go(-1);" style="height:30px;"/>
 					</td>

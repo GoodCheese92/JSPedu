@@ -12,37 +12,19 @@ caption {
 	color: green;
 }
 
-.title {
-	text-align: center;
-}
-
-.content {
-	text-align: center;
-}
-
 th {
 	background: #ffff8f;
 	border-right: 3px double black;
 }
 
-.name_th{text-align: right;}
-.subject{width:100%;}
+.title_td{
+	text-align: center;	
+}
 
+.content_td{
+	text-align:center;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.subject {
+	width: 100%;
+}
