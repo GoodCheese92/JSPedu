@@ -27,6 +27,10 @@ public class BoardListAction extends HttpServlet {
 		// DB에서 받아온 list를 바인딩, 포워딩
 		request.setAttribute("board_list", board_list);
 		
+		// 세션에 기록되어 있는 check 정보를 삭제
+		request.getSession().removeAttribute("check");
+		
+		// 포워딩
 		RequestDispatcher disp = request.getRequestDispatcher("board_list.jsp");
 		disp.forward(request, response);
 		

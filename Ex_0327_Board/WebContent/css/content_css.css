@@ -3,7 +3,10 @@
 table{margin: 5px auto;
 	  border-collapse: collapse;
 	  border-width: 5px;
-	  width:700px;}
+	  width:700px;
+	  table-layout: fixed;
+	  word-break:break-all;
+	  height:auto; }
 caption{font:bold 30px "hy헤드라인m", sans-serif;
 		color:green;}
 th{background: #ffff8f;

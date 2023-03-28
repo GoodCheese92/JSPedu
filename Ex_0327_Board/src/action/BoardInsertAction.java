@@ -20,6 +20,7 @@ public class BoardInsertAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
+		// board_insert_form으로부터 넘어온 파라미터 수신
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		String name = request.getParameter("name");
@@ -29,6 +30,7 @@ public class BoardInsertAction extends HttpServlet {
 		int step = 0;
 		int depth = 0;
 		
+		// 받은 파라미터들을 vo로 포장
 		BoardVO vo = new BoardVO();
 		vo.setName(name);
 		vo.setSubject(subject);

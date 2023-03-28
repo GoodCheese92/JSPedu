@@ -11,7 +11,9 @@
 			table{margin:0 auto;
 				  border-width:5px;
 				  border-collapse: collapse;
-				  width:700px;}
+				  width:700px;
+				  table-layout: fixed;
+				  word-break:break-all;}
 			caption{font:bold 30px "hy헤드라인m", sansserif;
 			        color:green;}
 			th{background:#ffff8f;
@@ -52,7 +54,7 @@
 					<!-- 댓글기호 표시 -->
 					<c:if test="${ vo.depth ne 0 }">└</c:if>
 					
-					<a href="view.do?idx=${ vo.idx }" target="_blank">
+					<a href="view.do?idx=${ vo.idx }">
 						${ vo.subject }
 					</a>
 				</td>			

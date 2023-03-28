@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>board_insert_form</title>
+		<title>reply_form.jsp</title>
 		
 		<link rel="stylesheet" href="css/insert_css.css">
 		
@@ -44,9 +43,11 @@
 		</script>
 	</head>
 	<body>
-		<form action="board_insert.do" name="f">
+		<form action="board_reply.do" name="f">
+			<input type="hidden" name="idx" value="${param.idx}"/>
+		
 			<table border="1">
-				<caption>:::게시글 등록:::</caption>
+				<caption>:::댓글 등록하기:::</caption>
 				<tr class="title">
 					<th class="title_th">제목</th>
 					<td colspan="3" class="title_td"><input type="text" placeholder="제목" name="subject" style="width:97%; height:30px;"/></td>

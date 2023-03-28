@@ -37,15 +37,15 @@ public class BoardDAO {
 		return board_list;
 	} // end of select()
 	
-	// 특정 번호 게시물 조회
-	public BoardVO select(int idx){
+	// 특정 번호 게시물 상세보기
+	public BoardVO selectOne(int idx){
 		SqlSession sqlSession = factory.openSession();
 		
-		BoardVO vo = sqlSession.selectOne("b.board_select", idx);
+		BoardVO vo = sqlSession.selectOne("b.board_one", idx);
 		sqlSession.close();
 		
 		return vo;
-	} // end of select()
+	} // end of selectOne()
 	
 	// 게시물 작성물 추가
 	public int insert(BoardVO vo) {
@@ -53,6 +53,32 @@ public class BoardDAO {
 		int res = sqlSession.insert("b.board_insert", vo);
 		sqlSession.close();
 		
+		return res;
+	} // end of insert
+	
+	// 조회수 증가
+	public int update_readhit(int idx) {
+		SqlSession sqlSession = factory.openSession(true);
+		int res = sqlSession.update("b.board_update_readhit", idx);
+		sqlSession.close();
+		
+		return res;
+	} // end of update_readhit();
+	
+	// 댓글 처리를 위해 step 증가
+	public int update_step(BoardVO baseVO) {
+		SqlSession sqlSession = factory.openSession(true);
+		int res = sqlSession.update("b.board_update_step", baseVO);
+		sqlSession.close();
+		
+		return res;
+	} // end of update_step()
+	
+	// 댓글 추가
+	public int reply(BoardVO vo) {
+		SqlSession sqlSession = factory.openSession(true);
+		int res = sqlSession.insert("b.board_insert_reply", vo);
+		sqlSession.close();
 		return res;
 	}
 

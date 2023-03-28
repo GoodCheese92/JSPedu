@@ -8,11 +8,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from board order by ref desc, step asc
 	</select>
 	
-	<select id="board_select" resultType="board" parameterType="int">
+	<!-- 특정 idx에 맞는 게시물 조회 -->
+	<select id="board_one" resultType="board" parameterType="int">
 		select * from board where idx = #{ idx }
 	
 	</select>
 	
+	<!-- 새 글 추가(댓글 X) -->
 	<insert id="board_insert" parameterType="board">
 		insert into BOARD values (seq_board_idx.nextVal,
 								  #{name},
@@ -26,6 +28,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 								  #{step},
 								  #{depth}
 								  )
+	</insert>
+	
+	<!-- 조회수 증가 -->
+	<update id="board_update_readhit" parameterType="int">
+		update board set readhit = readhit + 1 where idx = #{idx}
+	</update>
+	
+	<!-- 기준글의 step보다 큰 step값을 찾아서 step + 1 증가 -->
+	<update id="board_update_step" parameterType="board">
+		update BOARD set STEP = STEP + 1 where ref = #{ref} and step > #{step}	
+	</update>
+	
+	<insert id="board_insert_reply" parameterType="vo.BoardVO">
+		insert into board values ( seq_board_idx.nextVal,
+								   #{name},
+								   #{subject},
+								   #{content},
+								   #{pwd},
+								   #{ip},
+								   sysdate,
+								   0,
+								   #{ref},
+								   #{step},
+								   #{depth}	)
 	</insert>
 	
 </mapper>
