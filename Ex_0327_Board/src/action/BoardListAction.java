@@ -1,7 +1,9 @@
 package action;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BoardDAO;
+import util.Common;
 import vo.BoardVO;
 
 /**
@@ -21,8 +24,31 @@ public class BoardListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 첫 화면에는 파라미터가 없을 수도 있기 때문에 오류가 안나기 위해 처리
+		// board_list.do?page=2
+		// board_list.do?		--> null
+		// board_list.do?page=	--> empty
+		int nowPage = 1;
+		String page = request.getParameter("page"); // int로 받으면 null인지 empty인지 확인이 되지 않기 떄문에 String으로 받는다.
+		if(page != null && !page.isEmpty()) {
+			nowPage = Integer.parseInt(page);
+		}
+		
+		// 한 페이지에 표시될 게시물의 시작과 끝 번호를 계산
+		// 1페이지 : 1 ~ 5 까지의 게시글
+		// 2페이지 : 6 ~ 10 까지의 게시글
+		int start = (nowPage - 1) * Common.Board.BLOCKLIST + 1;
+		int end = start + Common.Board.BLOCKLIST - 1;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		
 		// 전체목록 조회
-		List<BoardVO> board_list = BoardDAO.getInstance().select();
+		List<BoardVO> board_list = null; 
+		BoardDAO dao = BoardDAO.getInstance();
+		
+		board_list = dao.select(map);
 		
 		// DB에서 받아온 list를 바인딩, 포워딩
 		request.setAttribute("board_list", board_list);

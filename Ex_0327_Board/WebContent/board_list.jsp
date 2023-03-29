@@ -44,8 +44,12 @@
 			</tr>
 			<c:forEach var="vo" items="${ board_list }">
 			<tr>
-				<td>${ vo.idx }</td>
-				
+				<c:if test="${ vo.del_info ne -1 }">
+					<td>${ vo.idx }</td>
+				</c:if>
+				<c:if test="${ vo.del_info eq -1 }">
+					<td></td>
+				</c:if>
 							
 				<td class="title">
 					<!-- 댓글 들여쓰기 -->
@@ -54,13 +58,23 @@
 					<!-- 댓글기호 표시 -->
 					<c:if test="${ vo.depth ne 0 }">└</c:if>
 					
-					<a href="view.do?idx=${ vo.idx }">
-						${ vo.subject }
-					</a>
-				</td>			
-				<td>${ vo.name }</td>			
-				<td>${ vo.regidate }</td>			
-				<td>${ vo.readhit }</td>			
+					<c:if test="${ vo.del_info ne -1 }">
+						<a href="view.do?idx=${ vo.idx }">${ vo.subject }</a>
+					</c:if>
+					<c:if test="${ vo.del_info eq -1 }">
+						<font color="gray">이미 삭제된 게시글입니다.</font>
+					</c:if>
+				</td>
+				<c:if test="${ vo.del_info ne -1 }">			
+					<td>${ vo.name }</td>			
+					<td>${ vo.regidate }</td>			
+					<td>${ vo.readhit }</td>
+				</c:if>			
+				<c:if test="${ vo.del_info eq -1 }">			
+					<td> </td>			
+					<td> </td>			
+					<td> </td>
+				</c:if>			
 			</tr>
 			</c:forEach>
 

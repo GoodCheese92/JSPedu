@@ -21,7 +21,7 @@ public class MyBatisConnector {
 	} // end of getInstance()
 
 	// 앞으로 어떤 DB에 연결할 것인가, mapper로 누구를 사용할 것인가? 등의 정보를 저장할 클래스
-	SqlSessionFactory factory = null;
+	SqlSessionFactory factory;
 
 	private MyBatisConnector() {
 		// sqlMapConfig.xml 파일을 읽어서 reader스트림에게 전달

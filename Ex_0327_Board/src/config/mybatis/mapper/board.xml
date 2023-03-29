@@ -26,7 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 								  #{readhit},
 								  seq_board_idx.currVal,
 								  #{step},
-								  #{depth}
+								  #{depth},
+								  0
 								  )
 	</insert>
 	
@@ -51,7 +52,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 								   0,
 								   #{ref},
 								   #{step},
-								   #{depth}	)
+								   #{depth},
+								   0	)
 	</insert>
 	
+	<update id="board_update_del_info" parameterType="int">
+		update board set del_info = -1 where idx = #{idx}
+	
+	</update>
+	
+	<select id="board_page_select" resultType="board" parameterType="java.util.HashMap">
+		select * from ( select RANK() OVER(order by REF desc, step) no, b.* from (select * from board) b)
+		where no between #{ start } AND #{ end }
+	</select>
+	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
