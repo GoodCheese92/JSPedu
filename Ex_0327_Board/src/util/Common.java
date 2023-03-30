@@ -7,7 +7,7 @@ public class Common {
 	// 설정해 두고 가져다 쓸 수 있다.
 	public static class Board {
 		// 한 페이지에 보여줄 게시글 갯수
-		public final static int BLOCKLIST = 5;
+		public final static int BLOCKLIST = 8;
 
 		// 한 화면에 보여질 페이지 메뉴 수
 		// < 1 2 3 >

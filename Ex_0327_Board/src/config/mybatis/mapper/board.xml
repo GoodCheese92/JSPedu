@@ -62,8 +62,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="board_page_select" resultType="board" parameterType="java.util.HashMap">
-		select * from ( select RANK() OVER(order by REF desc, step) no, b.* from (select * from board) b)
+		select * from ( select RANK() OVER(order by REF desc, step) no, b.* from 
+		(select * from board
+			<trim prefix="where" prefixOverrides="or|and">
+				<if test="name != null">
+					name Like '%'||#{name}||'%'
+				</if>
+				<if test="subject != null">
+					or subject Like '%'||#{subject}||'%'
+				</if>
+				<if test="content != null">
+					or content Like '%'||#{content}||'%'
+				</if>
+			</trim>			
+		) 
+		b)
 		where no between #{ start } AND #{ end }
+	</select>
+	
+	<!-- 게시판의 전체 게시물 수 조회(mybatis 동적 쿼리:상황에 따라 달라지는 SQL문장 만들기) -->
+	<select id="board_count" resultType="int" parameterType="java.util.HashMap">
+		select count(*) from board
+		<trim prefix="where" prefixOverrides="or|and">
+			<if test="name != null">
+				name Like '%'||#{name}||'%'
+			</if>
+			<if test="subject != null">
+				or subject Like '%'||#{subject}||'%'
+			</if>
+			<if test="content != null">
+				or content Like '%'||#{content}||'%'
+			</if>
+		</trim>
 	</select>
 	
 </mapper>

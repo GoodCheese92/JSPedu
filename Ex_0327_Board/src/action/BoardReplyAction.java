@@ -21,7 +21,8 @@ public class BoardReplyAction extends HttpServlet {
 			throws ServletException, IOException {
 		// 댓글처리 서블릿
 		request.setCharacterEncoding("utf-8");
-
+		
+		String page = request.getParameter("page");
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		String name = request.getParameter("name");
 		String subject = request.getParameter("subject");
@@ -52,9 +53,9 @@ public class BoardReplyAction extends HttpServlet {
 		vo.setDepth(baseVO.getDepth() + 1);
 
 		int res = dao.reply(vo);
-
+		
 		if (res == 1) {
-			response.sendRedirect("board_list.do");
+			response.sendRedirect("board_list.do?page=" + page);
 		}
 
 	} // end of service

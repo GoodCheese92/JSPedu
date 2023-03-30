@@ -40,7 +40,7 @@ public class BoardDAO {
 	} // end of select()
 
 	// 페이징 처리를 포함한 게시물 조회
-	public List<BoardVO> select(HashMap<String, Integer> map){
+	public List<BoardVO> select(HashMap<String, Object> map){
 		SqlSession sqlSession = factory.openSession();
 		
 		List<BoardVO> board_list = sqlSession.selectList("b.board_page_select", map);
@@ -102,5 +102,33 @@ public class BoardDAO {
 		
 		return res;
 	} // end of update_delInfo()
+	
+	// 전체 게시글 수 알아내기
+	public int getRowTotal(HashMap<String, Object> map) {
+		SqlSession sqlSession = factory.openSession();
+		int res = sqlSession.selectOne("b.board_count", map);
+		sqlSession.close();
+		return res;
+	} // end of getRowTotal()
 
 } // end of class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

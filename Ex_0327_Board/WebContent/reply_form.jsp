@@ -45,6 +45,7 @@
 	<body>
 		<form action="board_reply.do" name="f">
 			<input type="hidden" name="idx" value="${param.idx}"/>
+			<input type="hidden" name="page" value="${param.page}"/>
 		
 			<table border="1">
 				<caption>:::댓글 등록하기:::</caption>

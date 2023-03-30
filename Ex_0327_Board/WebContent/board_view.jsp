@@ -14,7 +14,7 @@
 		<script type="text/javascript">
 			// 댓글 폼
 			function reply(){
-				location.href="reply_form.jsp?idx=${vo.idx}";
+				location.href="reply_form.jsp?idx=${vo.idx}&page=${param.page}";
 			} // end of reply()
 			
 			// 삭제
@@ -47,7 +47,7 @@
 					} else{
 						alert("삭제실패");
 					}
-					location.href="board_list.do";
+					location.href="board_list.do?page=${param.page}";
 				}
 			} // end of resultFn()
 		</script>
@@ -83,7 +83,7 @@
 			<tr>
 				<td colspan="2" align="right">
 					<!-- 목록으로 돌아가기  -->
-					<img src="img/btn_list.gif" onclick="location.href='board_list.do'" style="cursor: pointer;"/>
+					<img src="img/btn_list.gif" onclick="location.href='board_list.do?page=${ param.page }&search=${param.search}&search_text=${param.search_text}'" style="cursor: pointer;"/>
 					
 					<!-- 댓글 -->
 					<c:if test="${vo.idx eq vo.ref }">
